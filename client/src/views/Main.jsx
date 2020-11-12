@@ -31,7 +31,7 @@ const Main = (props) => {
                                     <td>{product.description}</td>
                                     <td>
                                         <Link to="/edit">Edit</Link>
-                                        <Link to={`/show/${product.id}`}>Details</Link>
+                                        <Link to={`/show/${product._id}`}>Details</Link>
                                     </td>
                                 </tr>
                         })

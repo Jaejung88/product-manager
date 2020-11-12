@@ -13,7 +13,7 @@ module.exports = {
             .catch(err => res.json(err.errors))
     },
     show: (req, res) => {
-        Product.findOne({_id: req.params.id})
+        Product.findOne({_id: req.params._id})
             .then(data => res.json({results: data}))
             .catch(err => res.json(err.errors))
     }

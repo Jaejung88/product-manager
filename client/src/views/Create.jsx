@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { navigate } from "@reach/router";
+import { Link, navigate } from "@reach/router";
 import Axios from "axios";
 import ProductForm from '../components/ProductForm';
 
@@ -36,18 +36,35 @@ const Create = (props) => {
             })
     }
 
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        Axios.get("http://localhost:8000/api/products")
+            .then(res => setProducts(res.data.results))
+            .catch(err => console.log(err))
+    },[])
+
     return(
-        <div>
-            <h2 className="text-center">Product Manager</h2>
-            <ProductForm
-                form={form}
-                errors={errors}
-                handleSubmit={handleSubmit}
-                handleChange={handleChange}
-                submitValue="Create Product"
-            />
-        </div>
-        
+        <>
+            <div>
+                <h2 className="text-center">Product Manager</h2>
+                <ProductForm
+                    form={form}
+                    errors={errors}
+                    handleSubmit={handleSubmit}
+                    handleChange={handleChange}
+                    submitValue="Create Product"
+                />
+            </div>
+            <div>
+                <h1 className="text-center">All Products:</h1>
+                {
+                products.map((product, i) => {
+                    return <Link to={`/show/${product._id}`}>{product.title}</Link>
+                })
+                }
+            </div>
+        </>
     );
 
 }

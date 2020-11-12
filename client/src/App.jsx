@@ -3,15 +3,17 @@ import {Reach, Router, Link} from "@reach/router";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Main from './views/Main';
 import Create from './views/Create';
+import Show from './views/Show';
 
 
 function App() {
+  
   return (
     <div className="App">
       <Router>
         <Main path="/" />
         <Create path="/create" />
-        {/* <Show path="/show/:id" /> */}
+        <Show path="/show/:_id" />
       </Router>
     </div>
   );
