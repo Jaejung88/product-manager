@@ -40,8 +40,8 @@ const Create = (props) => {
 
     useEffect(() => {
         Axios.get("http://localhost:8000/api/products")
-            .then(res => setProducts(res.data.results))
-            .catch(err => console.log(err))
+        .then(res => setProducts(res.data.results))
+        .catch(err => console.log(err))
     },[])
 
     return(
